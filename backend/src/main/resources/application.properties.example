@@ -1,0 +1,30 @@
+# ===============================
+# Configuration de la base de données (MySQL)
+# ===============================
+spring.datasource.url=jdbc:mysql://localhost:3306/nom_de_la_base?useSSL=false&serverTimezone=UTC
+spring.datasource.username=your_username
+spring.datasource.password=your_password
+
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+
+# JPA / Hibernate
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
+
+# ===============================
+# Configuration du serveur
+# ===============================
+server.port=8080
+
+# ===============================
+# Sécurité JWT
+# ===============================
+jwt.secret=your_jwt_secret_here
+jwt.expiration=3600000   # 1 heure en millisecondes
+
+# ===============================
+# Logs
+# ===============================
+logging.level.org.springframework=INFO
+logging.level.com.hrfit.backend=DEBUG
