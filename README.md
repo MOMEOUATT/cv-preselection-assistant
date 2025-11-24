@@ -73,4 +73,3 @@ Les PR sont les bienvenues ! Merci de suivre les conventions de commit et de doc
 
 ## 📄 Licence
 MIT
-👉 Veux-tu que je t’ajoute aussi une **section “Prérequis”** (Java, Maven, Node.js, Angular CLI, MySQL) pour que les autres sachent exactement quoi installer avant de lancer ton projet ?
