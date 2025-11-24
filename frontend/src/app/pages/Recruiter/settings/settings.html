@@ -1,0 +1,175 @@
+<app-sidebar></app-sidebar>
+<div class="settings-container">
+  <h2>Paramètres</h2>
+  <p class="subtitle">Configurez votre application selon vos besoins</p>
+
+  <mat-tab-group>
+    <mat-tab label=" ⚙️Général" class="fa fa-eye" >
+      <div class="form-section">
+        <h3>Informations de personnelles</h3>
+
+         <div class="form-row">
+          <mat-form-field appearance="outline">
+            <mat-label>Nom</mat-label>
+            <input matInput type="text">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Prénoms</mat-label>
+            <input matInput type="text">
+          </mat-form-field>
+        </div>
+
+        <div class="form-row">
+          <mat-form-field appearance="outline">
+            <mat-label>Nom de l'entreprise</mat-label>
+            <input matInput placeholder="Mon Entreprise">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Email de contact RH</mat-label>
+            <input matInput type="email">
+          </mat-form-field>
+        </div>
+
+        <div class="form-row">
+            <mat-form-field appearance="outline">
+                <mat-label>Mot de passe</mat-label>
+                <input matInput [type]="hide() ? 'password' : 'text'" />
+                <button matIconButton matSuffix (click)="clickEvent($event)" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide()">
+                    <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+        </div>
+
+        <div class="save-btn">
+          <button matButton="filled">
+            <i class="fa fa-save"></i> Sauvegarder
+          </button>
+        </div>
+      </div>
+    </mat-tab>
+
+    <mat-tab label="📊Algorithme de scoring">
+      <div class="form-section">
+        <h3>Pondérations des critères</h3>
+        <p class="substitle">Ajustez l'importance de chaque critère dans le calcul du score de compatibilité.</p>
+        <div>
+          <div class="skills-container">
+            <label  class="skills-label">Compétences techniques</label>
+            <label class="skills-value">{{slider1.value}}%</label>
+          </div>
+          <mat-slider
+              class="example-margin"
+              ngDefaultControl
+              [(ngModel)]="slider1Value"
+              [disabled]="false"
+              [max]="100"
+              [min]="0"
+              [step]="1"
+              [discrete]="true"
+              [showTickMarks]="false">
+            <input matSliderThumb #slider1>
+          </mat-slider>
+        </div>
+
+        <div>
+          <div class="skills-container">
+            <label class="skills-label">Niveau d'éducation</label>
+            <label class="skills-value">{{slider2.value}}%</label>
+          </div>
+          <mat-slider
+              class="example-margin"
+              ngDefaultControl
+              [(ngModel)]="slider2Value"
+              [disabled]="false"
+              [max]="100"
+              [min]="0"
+              [step]="1"
+              [discrete]="true"
+              [showTickMarks]="false">
+            <input matSliderThumb #slider2>
+          </mat-slider>
+        </div>
+
+        <div>
+          <div class="skills-container">
+            <label class="skills-label">Expérience profesionnelle</label>
+            <label class="skills-value">{{slider3.value}}%</label>
+          </div>
+          <mat-slider
+              class="example-margin"
+              ngDefaultControl
+              [(ngModel)]="slider3Value"
+              [disabled]="false"
+              [max]="100"
+              [min]="0"
+              [step]="1"
+              [discrete]="true"
+              [showTickMarks]="false">
+            <input matSliderThumb #slider3>
+          </mat-slider>
+        </div>
+
+        <div>
+          <div class="skills-container">
+            <label  class="skills-label">Langues</label>
+            <label class="skills-value">{{slider4.value}}%</label>
+          </div>
+          <mat-slider
+              class="example-margin"
+              ngDefaultControl
+              [disabled]="false"
+              [max]="100"
+              [min]="0"
+              [step]="1"
+              [discrete]="true"
+              [showTickMarks]="false"
+              [(ngModel)]="slider4Value">
+            <input matSliderThumb #slider4>
+          </mat-slider>
+        </div>
+        @if (total>100) {
+          <div class="error" style="background-color: rgb(255, 237, 237)">
+              <div class="total" style="color: rgb(182, 38, 38)">
+                <p>Total: {{total}}%</p>
+                <p>Le total doit être égal à 100% pour un calcul optimal.</p>
+              </div>
+          </div>
+        } @else {
+          <div class="error" style="background-color: rgb(237, 246, 255)">
+              <div class="total" style="color: rgb(38, 65, 182)">
+                <p>Total: {{total}}%</p>
+                <p>Le total doit être égal à 100% pour un calcul optimal.</p>
+              </div>
+          </div>
+        }
+
+        <div class="scoring">
+          <h3>Seuil de scoring</h3>
+          <div class="skills-container">
+            <label class="skills-label">Score minimum pour présélection automatique</label>
+            <label class="skills-value">{{slider5.value}}%</label>
+          </div>
+          <mat-slider
+              class="example-margin"
+              [disabled]="false"
+              [max]="100"
+              [min]="0"
+              [step]="1"
+              [discrete]="false"
+              [showTickMarks]="false">
+            <input matSliderThumb #slider5>
+          </mat-slider>
+        </div>
+
+        <div class="save-btn">
+          <button matButton="filled">
+            <i class="fa fa-save"></i>
+             Sauvegarder
+          </button>
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>

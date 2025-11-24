@@ -1,0 +1,74 @@
+<app-sidebar></app-sidebar>
+<div class="container">
+  <div class="profile-header">
+    <div class="left">
+        <h2>Sophie Leroy</h2>
+        <p class="job-title">Designer UX/UI</p>
+    </div>
+    <div class="right">
+        <a class="back" (click)="return()"><i class="fa-solid fa-arrow-left"></i> Retour à la liste</a>
+    </div>
+  </div>
+
+  <div class="content">
+    <!-- Colonne gauche -->
+    <div class="left-column">
+      <div class="card">
+        <h3>Informations personnelles</h3>
+        <div class="info-line">
+          <div><a>Email:</a><br> <a class="value">sophie.leroy@email.com </a></div>
+          <div><a>Téléphone:</a><br> <a class="value">06 11 22 33 44</a></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Analyse du CV</h3>
+        <div class="cv-line">
+            <div><a>Éducation:</a><br> <a class="value">Master</a></div>
+            <div><a>Expérience:</a><br> <a class="value">6 ans</a> </div>
+        </div>
+
+        <div class="skills">
+            <a>Compétences détectées:</a><br>
+          <span>Figma</span>
+          <span>Sketch</span>
+          <span>Adobe Creative Suite</span>
+          <span>Photoshop</span>
+          <span>Illustrator</span>
+          <span>Prototypage</span>
+          <span>Design System</span>
+        </div>
+
+        <a>Langues:</a>
+        <div class="languages">
+          <span>Français</span>
+          <span>Anglais</span>
+          <span>Italien</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Colonne droite -->
+    <div class="right-column">
+      <div class="score-card">
+        <div class="score">95%</div>
+        <p>Score de compatibilité</p>
+
+        <select>
+            <option>En attente</option>
+            <option>Examinée</option>
+            <option>Présélectionnée</option>
+            <option>Rejetée</option>
+        </select>
+
+        <button class="btn-primary"><i class="fa-solid fa-download"></i> Télécharger CV</button>
+      </div>
+
+      <div class="stats">
+        <h4>Statistiques</h4>
+        <p>Postulé le: <strong>21/01/2024</strong></p>
+        <p>Fichier CV: <strong>CV_Sophie_Leroy.pdf</strong></p>
+      </div>
+    </div>
+  </div>
+</div>

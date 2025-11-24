@@ -1,0 +1,96 @@
+.candidature-card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      margin-bottom: 20px;
+    }
+
+    .candidature-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .candidature-header h3 {
+      margin: 0;
+      font-size: 20px;
+    }
+
+    .header{
+        display: flex;
+        gap: 10px;
+    }
+
+     .score {
+      background: #ecfdf5;
+      color: #16a34a;
+      font-weight: bold;
+      padding: 8px 14px;
+      border-radius: 25px;
+      font-size: 16px;
+      text-align: center;
+    }
+
+    .score-box {
+      display: flex;
+      justify-content: right;
+      margin-top: 10px;
+    }
+
+    .score-label {
+      font-size: 12px;
+      color: #555;
+      margin-top: 5px;
+      text-align: right;
+    }
+
+    .status {
+      font-size: 14px;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-weight: 500;
+    }
+
+    .status.waiting {
+      background: #fff7ed;
+      color: #ff4b00;
+    }
+
+    .status.read {
+      background: #f0f9ff;
+      color: #0284c7;
+    }
+
+    .status.selected {
+      background: #ecfdf5;
+      color: #16a34a;
+    }
+
+    .company-info {
+      margin: 10px 0;
+      font-size: 14px;
+      color: #555;
+    }
+
+    .chips {
+      margin: 10px 0;
+    }
+
+    .chip {
+      display: inline-block;
+      background: #e0f2fe;
+      color: #0369a1;
+      font-size: 13px;
+      padding: 5px 10px;
+      border-radius: 15px;
+      margin: 3px;
+    }
+
+    .details {
+      font-size: 14px;
+      margin-top: 10px;
+      color: #444;
+    }

@@ -1,0 +1,135 @@
+<app-sidebar></app-sidebar>
+<!-- job-offer-dialog.component.html -->
+<div class="container">
+    <form [formGroup]="offerForm" class="form-container">
+        <h2>Créer une offre d'emploi</h2>
+    <!-- Ligne 1 -->
+        <div class="row">
+            <mat-form-field >
+            <mat-label>Titre du poste</mat-label>
+            <input matInput formControlName="title">
+            </mat-form-field>
+
+            <mat-form-field >
+            <mat-label>Entreprise</mat-label>
+            <input matInput formControlName="enterprise">
+            </mat-form-field>
+        </div>
+
+        <!-- Ligne 2 -->
+        <div class="row">
+            <mat-form-field>
+            <mat-label>Localisation</mat-label>
+            <input matInput formControlName="location">
+            </mat-form-field>
+
+            <mat-form-field >
+            <mat-label>Type de contrat</mat-label>
+            <input matInput formControlName="type">
+            </mat-form-field>
+            
+        </div>
+
+        <!-- Ligne 3 -->
+        <div class="row">
+        
+            <mat-form-field >
+            <mat-label>Durée du contrat</mat-label>
+            <input matInput formControlName="duration">
+            </mat-form-field>
+
+            <mat-form-field >
+            <mat-label>Date limite de candidature</mat-label>
+            <input matInput [matDatepicker]="picker" (dateChange)="updateDeadline($event)" formControlName="deadline">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
+
+        <!-- Description -->
+        <mat-form-field  class="full-width">
+            <mat-label>Description du poste</mat-label>
+            <textarea matInput rows="4" formControlName="description"></textarea>
+        </mat-form-field>
+
+        <h3>Exigences du poste</h3>
+        <div class="row">
+            <mat-form-field>
+            <mat-label>Formation requise</mat-label>
+            <input matInput formControlName="education">
+            </mat-form-field>
+
+            <mat-form-field>
+            <mat-label>Expérience minimale (années)</mat-label>
+            <input matInput type="number" formControlName="exp">
+            </mat-form-field>
+        </div>
+        <!-- Compétences -->
+            <mat-form-field class="full-width">
+                <mat-label>Compétences</mat-label>
+                <mat-chip-grid #chipList formControlName="skills">
+                    @for (skill of skills; track $index) {
+                        <mat-chip-row 
+                            (removed)="removeChip(skill, 'skills')" 
+                            [editable]="false">
+                            {{skill}}
+                            <button matChipRemove>
+                                <mat-icon>cancel</mat-icon>
+                            </button>
+                        </mat-chip-row>
+                    }
+                    <input
+                        placeholder="Ajouter une compétence"
+                        [matChipInputFor]="chipList"
+                        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                        (matChipInputTokenEnd)="addChip($event, 'skills')"
+                    >
+                </mat-chip-grid>
+            </mat-form-field>
+
+            <!-- Langues -->
+            <mat-form-field class="full-width">
+                <mat-label>Langues</mat-label>
+                <mat-chip-grid #chipListLang formControlName="language">
+                    @for (lang of languages; track $index) {
+                        <mat-chip-row 
+                            (removed)="removeChip(lang, 'languages')" 
+                            [editable]="false">
+                            {{lang}}
+                            <button matChipRemove>
+                                <mat-icon>cancel</mat-icon>
+                            </button>
+                        </mat-chip-row>
+                    }
+                    <input
+                        placeholder="Ajouter une langue"
+                        [matChipInputFor]="chipListLang"
+                        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                        (matChipInputTokenEnd)="addChip($event, 'languages')"
+                    >
+                </mat-chip-grid>
+            </mat-form-field>
+            <!-- Salaire -->
+        <h3>Rémunération</h3>
+        <div class="row">
+            <mat-form-field>
+            <mat-label>Salaire minimum (Dhs)</mat-label>
+            <input matInput type="number" formControlName="min_salary">
+            </mat-form-field>
+
+            <mat-form-field>
+            <mat-label>Salaire maximum (Dhs)</mat-label>
+            <input matInput type="number" formControlName="max_salary">
+            </mat-form-field>
+        </div>
+        <div class="button">
+            <div class="button-abort">
+            <button matButton="tonal" (click)="navigateBack()" >Annuler</button>
+        </div>
+        <div class="button-confirm">
+            <button matButton="filled" (click)="onButtonClick()" [disabled]="offerForm.invalid">Sauvegarder</button>
+        </div>
+        </div>
+    </form>
+</div>
+

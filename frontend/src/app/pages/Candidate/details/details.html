@@ -1,0 +1,89 @@
+<app-cand-sidebar></app-cand-sidebar>
+<div class="settings-container">
+  <h2>⚙️ Paramètres du compte</h2>
+
+  <mat-tab-group mat-stretch-tabs>
+    <!-- Profil -->
+    <mat-tab label="👤 Profil & CV">
+      <div class="tab-content">
+        <mat-form-field  class="full-width">
+          <mat-label>Nom complet</mat-label>
+          <input matInput>
+        </mat-form-field>
+
+        <mat-form-field  class="full-width">
+          <mat-label>Email</mat-label>
+          <input matInput type="email">
+        </mat-form-field>
+
+        <mat-form-field  class="full-width">
+          <mat-label>Liens externes</mat-label>
+          <input matInput placeholder="LinkedIn, GitHub…">
+        </mat-form-field>
+
+        <div class="form-group">
+          <button mat-raised-button (click)="$event.preventDefault(); fileUploader.click();">
+            Importer CV: {{fileUploader.files?.[0]?.name || '....'}}
+          </button>
+          <input hidden #fileUploader id="file" name="file" type="file">
+        </div>
+      </div>
+    </mat-tab>
+
+    <!-- Sécurité -->
+    <mat-tab label="🔐 Sécurité">
+      <div class="tab-content">
+        <mat-form-field  class="full-width">
+          <mat-label>Mot de passe actuel</mat-label>
+          <input matInput type="password">
+        </mat-form-field>
+
+        <mat-form-field  class="full-width">
+          <mat-label>Nouveau mot de passe</mat-label>
+          <input matInput type="password">
+        </mat-form-field>
+
+        <div class="actions">
+          <button mat-raised-button color="primary">Modifier le mot de passe</button>
+          <button mat-stroked-button color="accent">Activer la double authentification</button>
+        </div>
+      </div>
+    </mat-tab>
+
+    <!-- Notifications -->
+    <mat-tab label="📬 Notifications">
+      <div class="tab-content">
+        <mat-form-field  class="full-width">
+          <mat-label>Mode de notification</mat-label>
+          <mat-select>
+            <mat-option value="email">Email</mat-option>
+            <mat-option value="sms">SMS</mat-option>
+            <mat-option value="app">Application</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field  class="full-width">
+          <mat-label>Fréquence</mat-label>
+          <mat-select>
+            <mat-option value="instant">Immédiat</mat-option>
+            <mat-option value="daily">Quotidien</mat-option>
+            <mat-option value="weekly">Hebdomadaire</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </mat-tab>
+
+    
+
+    <!-- Données -->
+    <mat-tab label="💾 Données & Confidentialité">
+      <div class="tab-content">
+        <div class="actions">
+          <button mat-stroked-button color="accent">Télécharger mes données</button>
+          <button mat-raised-button color="warn">Supprimer mon compte</button>
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>
+

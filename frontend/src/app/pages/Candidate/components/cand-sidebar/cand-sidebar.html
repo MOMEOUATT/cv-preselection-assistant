@@ -1,0 +1,22 @@
+<div class="sidebar">
+  <div class="sidebar-logo">
+    <img src="ChatGPT Image 6 août 2025, 15_56_23.png" alt="Logo RHift">
+    <h2>HRift</h2>
+  </div>
+  <nav class="sidebar-nav">
+    <a class="sidebar-link" [routerLink]="['/candidate/offers']" (click)="forceReload()"  routerLinkActive="active">
+      <i class="fa fa-briefcase"></i> Offres disponibles
+    </a>
+    <a class="sidebar-link" routerLink="/candidate/application"routerLinkActive="active">
+      <i class="fas fa-user-check"></i> Mes Candidatures
+    </a>
+    <a class="sidebar-link" routerLink="/candidate/detail" routerLinkActive="active">
+      <i class="fa fa-cog"></i> Paramètres
+    </a>
+  </nav>
+  <div class="logout">
+    <a class="sidebar-link" routerLinkActive="active" (click)="logout()">
+      <i class="fa-duotone fa-solid fa-right-from-bracket"></i> Déconnexion
+    </a>
+  </div>
+</div>

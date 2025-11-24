@@ -1,0 +1,90 @@
+<app-cand-sidebar></app-cand-sidebar>
+<div class="apply-card">
+  <form [formGroup]="applyForm" (ngSubmit)="onSubmit()" class="apply-form">
+    <h2>Postuler pour : {{offer.title}}</h2>
+    <p class="subtitle">{{offer.enterprise}} - {{offer.location}}</p>
+
+    <div class="row">
+      <mat-form-field class="field">
+        <mat-label>Nom: </mat-label>
+        <input matInput formControlName="lastName" required>
+      </mat-form-field>
+
+      <mat-form-field class="field">
+        <mat-label>Prénoms: </mat-label>
+        <input matInput formControlName="firstName" required>
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field class="field">
+        <mat-label>Email: </mat-label>
+        <input matInput type="email" formControlName="email" required>
+      </mat-form-field>
+
+      <mat-form-field class="field">
+        <mat-label>Téléphone: </mat-label>
+        <input matInput type="tel" formControlName="phone">
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <p>Avez-vous de l'expérience dans ce domaine ?</p>
+      <mat-radio-group aria-label="Choisissez une option" formControlName="expValue">
+        <mat-radio-button value="Oui">Oui</mat-radio-button>
+        <mat-radio-button value="Non">Non</mat-radio-button>
+      </mat-radio-group>
+      @if(applyForm.get('expValue')?.value=="Oui"){
+        <mat-form-field class="field">
+          <mat-label>Nombre d'années d'expérience</mat-label>
+          <input matInput type="number" formControlName="exp"/>
+        </mat-form-field>
+      }
+    </div>
+
+    <div class="row">
+      <mat-form-field class="field">
+        <mat-label>Date de disponibilité</mat-label>
+        <input matInput [matDatepicker]="picker" placeholder="Choisir une date" formControlName="disponibility">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+
+
+    <!-- Upload CV -->
+    <div class="upload-box" (click)="fileInput.click()" >
+      
+      <input type="file" #fileInput hidden (change)="onFileSelected($event)" 
+             accept=".pdf,.doc,.docx,.txt" />
+      @if (!cvFile) {
+        <div>
+          <!--<mat-icon>cloud_upload</mat-icon>-->
+          <i class="fa-solid fa-arrow-up-from-bracket"></i>
+          <p>Cliquez pour téléverser votre CV</p>
+          <span>PDF, TXT, DOC, DOCX (max 5MB)</span>
+      </div>
+      } @else if (cvFile) {
+        <div>
+          <i class="fa-solid fa-file"></i>
+          <p>{{ fileInput.files?.[0]?.name || '....' }}</p>
+        </div>
+      }
+    </div>
+
+    <!-- Consentement -->
+    <mat-checkbox>
+      J’accepte que mes données soient utilisées dans le cadre de ce recrutement.
+    </mat-checkbox>
+
+    <!-- Boutons -->
+    <div class="buttons">
+      <button mat-button type="button" (click)="onCancel()">Annuler</button>
+      <button mat-raised-button color="primary" type="submit" [disabled]="applyForm.invalid || isSubmitting">
+        <mat-icon>send</mat-icon>
+        Envoyer ma candidature
+      </button>
+    </div>
+  </form>
+</div>
+<div>Emmanuel-Marie</div>

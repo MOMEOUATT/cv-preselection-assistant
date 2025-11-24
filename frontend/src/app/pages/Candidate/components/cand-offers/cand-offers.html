@@ -1,0 +1,47 @@
+<div class="offer-card">
+    <div class="items">
+        <div class="header">
+            <h3 class="job-title"> {{offer().title}} </h3>
+        </div>
+
+        <a class="company-name"> {{offer().enterprise}} </a>
+
+        <div class="job-meta">
+            <span><i class="fas fa-map-marker-alt"></i> {{offer().location}} </span>
+            <span><i class="fas fa-calendar-alt"></i> {{offer().type}}</span>
+        </div>
+
+       @if (offer().description.length > 100) {
+            <p class="description">
+                {{offer().description | slice: 0:100}}...
+            </p>
+        }@else {
+            <p class="description">
+                {{offer().description}}
+            </p>
+        }
+
+        <p class="competence">Profils recherchés:</p>
+        <div class="skills">
+            @for (skill of firstfoor; track $index) {
+            <span class="badge"> {{skill}} </span>
+           }
+           @if (rst!=0) {
+            <span class="badge light"> +{{rst}} autres</span>
+           }
+        </div>
+
+        <div class="require">
+            <a class="edu"><i class="fas fa-star"></i><strong> Education: </strong> {{offer().education}}</a>
+            <a class="exp"><i class="fas fa-trophy"></i> <strong> Expérience: </strong>{{offer().exp}} ans minimum</a>
+            <a class="lang"><i class="fas fa-language"></i> <strong> Langues: </strong>{{offer().language}}</a>
+        </div>
+
+        <div class="bottom">
+            <div class="actions">
+            <button matButton="tonal" class="details" (click)="details(offer().id)"><i class="fas fa-eye" id="view"></i> Détails</button>
+            <button matButton="filled" class="send" (click)="apply(offer().id)"><mat-icon>send</mat-icon> Postuler</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,41 @@
+<app-cand-sidebar></app-cand-sidebar>
+<div class="container">
+    <h2>Mes candidatures</h2>
+    <p class="subtitle">Suivez l'état de vos candidatures</p>
+
+    <!-- Statistiques -->
+    <div class="stats">
+        <div class="stat-card blue">
+        <i class="fa-solid fa-file"></i>
+        <div class="text">
+            <p>Total</p>
+            <strong> {{applys().length}} </strong>
+        </div>
+        </div>
+        <div class="stat-card orange">
+        <i class="fa-solid fa-calendar"></i>
+        <div class="text">
+            <p>En attente</p>
+            <strong>2</strong>
+        </div>
+        </div>
+        <div class="stat-card green">
+        <i class="fa-solid fa-user-check"></i>
+        <div class="text">
+            <p>Présélectionnées</p>
+            <strong>3</strong>
+        </div>
+        </div>
+        <div class="stat-card yellow">
+        <i class="fa-solid fa-star"></i>
+        <div class="text">
+            <p>Score moyen</p>
+            <strong>{{mean.toFixed(2)}}%</strong>
+        </div>
+        </div>
+    </div>
+
+    @for (apply of applys(); track apply) {
+        <app-candidature-card [apply]="apply"></app-candidature-card>
+    }
+

@@ -1,0 +1,11 @@
+.row{
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 260px;
+    margin-right: 20px;
+}
+
+.items{
+    flex-grow: 1;
+    flex-basis: 200;
+}

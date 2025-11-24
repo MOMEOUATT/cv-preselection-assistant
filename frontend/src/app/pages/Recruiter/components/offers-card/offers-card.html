@@ -1,0 +1,56 @@
+<div class="offer-card">
+    <div class="items">
+        <div class="header">
+            <h3 class="job-title">{{offer().title}}</h3>
+            @if (offer().status == "active") {
+                <span class="status active">{{offer().status}}</span>
+            } @else {
+                <span class="status inactive">{{offer().status}}</span>
+            }
+        </div>
+
+        <a class="company-name" href="#">{{offer().enterprise}}</a>
+
+        <div class="job-meta">
+            <span><i class="fas fa-map-marker-alt"></i> {{offer().location}}</span>
+            <span><i class="fas fa-calendar-alt"></i> {{offer().type}}</span>
+        </div>
+
+        @if (offer().description.length > 100) {
+            <p class="description">
+                {{offer().description | slice: 0:100}}...
+            </p>
+        }@else {
+            <p class="description">
+                {{offer().description}}
+            </p>
+        }
+
+        <p class="competence">Compétences requises:</p>
+        <div class="skills">
+           @for (skill of firstfoor; track $index) {
+            <span class="badge"> {{skill}} </span>
+           }
+           @if (rst!=0) {
+            <span class="badge light"> +{{rst}} autres</span>
+           }
+        </div>
+
+        <div class="bottom">
+            @if (offer().apply === 0) {
+                <span><i class="fas fa-user"></i> Aucune candidature</span>
+            } @else if (offer().apply === 1) {
+                <span><i class="fas fa-user"></i> 1 candidature</span>
+            } @else {
+                <span><i class="fas fa-user"></i> {{offer().apply}} candidatures</span>
+            }
+            <span>{{offer().min_salary}}Dhs - {{offer().max_salary}}Dhs</span>
+
+            <div class="actions">
+            <i class="fa-regular fa-eye" id="view" (click)="viewOffer(offer().id)"></i>
+            <i class="fa-regular fa-edit" id="edit"  (click)="updateOffer(offer().id)"></i>
+            <i class="fa-regular fa-trash-alt" id="delete" (click)="deleteOffer(offer().id)"></i>
+            </div>
+        </div>
+    </div>
+</div>

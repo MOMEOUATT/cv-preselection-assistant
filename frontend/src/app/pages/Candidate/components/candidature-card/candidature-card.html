@@ -1,0 +1,35 @@
+<div class="candidature-card">
+        <div class="candidature-header">
+            <div class="header">
+                <h3>{{apply().offerTitle}}</h3>
+                <span class="status waiting">En attente de lecture</span>
+            </div>
+        <div class="score-box">
+        <div>
+            <div class="score">{{apply().score.toFixed(2)}}%</div>
+            <div class="score-label">Score de compatibilité</div>
+        </div>
+        </div>
+        </div>
+        <div class="company-info">
+        <i class="fa-solid fa-building"></i> {{apply().offerEnterprise}} &nbsp;&nbsp;
+        <i class="fa-solid fa-location-dot"></i> {{apply().offerLocation}} &nbsp;&nbsp;
+        <i class="fa-regular fa-calendar"></i> Postulé le {{apply().createdAt | date: 'dd/MM/yyyy'}}
+        </div>
+        <div>
+        <strong>Compétences analysées dans votre CV :</strong>
+        <div class="chips">
+            @for (skill of apply().cvSkills; track skill) {
+                <span class="chip"> {{skill}} </span>
+            }
+        </div>
+        </div>
+        <div class="details">
+        <p>@if (apply().exp>0) {
+            <strong>Expérience :</strong> {{apply().exp}} ans &nbsp;&nbsp;
+        }@else {
+            <strong>Expérience :</strong> Aucune expérience &nbsp;&nbsp;
+        }
+        <strong>Fichier :</strong> {{apply().cvName}}</p>
+        </div>
+    </div>

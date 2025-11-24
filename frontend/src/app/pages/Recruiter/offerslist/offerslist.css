@@ -1,0 +1,43 @@
+.row{
+    display: flex;
+    flex-wrap: wrap; /* pour aller à la ligne si l’écran est petit */
+    gap: 16px; /* espace entre les cartes */
+    margin-left: 260px;
+    margin-bottom: 24px;
+    margin-top: 10px;
+}
+
+.null{
+    margin-left: 250px;
+    margin-top: 150px;
+    padding: 50px;
+    font-size: 30px;
+    font-style: italic;
+    font: optional;
+    font-weight: 100;
+}
+
+.offer{
+    position: relative;
+    height: 10vh;
+}
+
+.offerbutton{
+    border-radius: 8px;
+    position: absolute;
+    width: auto;
+    top: 20px;
+    right: 20px;
+    font-size: 16px;
+    box-shadow: 0 4px 8px rgb(0 105 255 / 0.3);
+    padding: 10px 20px;
+    border: none;
+}
+
+
+.offerbutton .icon {
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 1;
+    user-select: none;
+}

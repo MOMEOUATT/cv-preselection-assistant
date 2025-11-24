@@ -1,0 +1,20 @@
+<app-cand-sidebar></app-cand-sidebar>
+@if (offers().length ==0) {
+    <div class="null">
+        <p>Aucune offre pour l'instant(Veuillez patienter!!!).</p>
+    </div>
+} @else {
+  <app-candsearchbar [(searchTerm)]="searchTerm"></app-candsearchbar>
+  <div class="row">
+       @if (filterOffer().length == 0) {
+        <div class="null">
+            <p>Aucune offre trouvée</p>
+        </div>
+       } @else {
+         @for(offre of filterOffer(); track offre){
+          <app-cand-offers [offer]="offre"></app-cand-offers>
+        }
+       }
+    </div>
+}
+

@@ -1,0 +1,86 @@
+<app-sidebar></app-sidebar>
+<div class="container">
+    <a class="back" (click)="Back()"><i class="fa-solid fa-arrow-left"></i> Retour aux offres</a>
+
+  <section class="card job">
+    <div class="job-head">
+      <h1>{{test}}</h1>
+      @if (offer.status == "active") {
+        <span class="badge active">{{offer.status}}</span>
+      }@else {
+        <span class="badge inactive">{{offer.status}}</span>
+      }
+    </div>
+
+    <div class="meta">
+      <span><i class="fa-solid fa-building"></i> {{offer.enterprise}}</span>
+      <span><i class="fa-solid fa-location-dot"></i> {{offer.location}}</span>
+      <span><i class="fa-regular fa-calendar"></i> Créée le {{offer.createdAt | date: 'dd/MM/yyyy'}}</span>
+      <span><i class="fas fa-briefcase"></i>{{offer.type}}</span>
+    </div>
+
+    <p class="desc">{{offer.description}}</p>
+
+    <div class="split">
+      <div>
+        <p class="section-title">Compétences requises</p>
+        @for (skill of skills; track $index) {
+          <span class="chip"> {{skill}} </span>
+        }
+      </div>
+      <div class="bullets">
+        <p><i class="fa-regular fa-star"></i> <b>Éducation:</b>{{offer.education}} </p>
+        <p><i class="fa-solid fa-trophy"></i> <b>Expérience:</b> {{offer.exp}} ans minimum</p>
+        <p><i class="fa-solid fa-language"></i> <b>Langues:</b>{{offer.language}}</p>
+        <p><i class="fas fa-clock"></i> <b>Durée:</b> {{offer.duration}}</p>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><b class="blue">{{count}}</b><small>Total</small></div>
+      <div class="stat"><b class="blue">0</b><small>En attente</small></div>
+      <div class="stat"><b class="blue">1</b><small>Examinées</small></div>
+      <div class="stat"><b class="blue">2</b><small>Présélectionnées</small></div>
+      <div class="stat"><b class="blue">0</b><small>Rejetées</small></div>
+      <div class="stat"><b class="amber">78%</b><small>Score moyen</small></div>
+      <div class="stat"><b class="green">1</b><small>Score ≥ 80%</small></div>
+    </div>
+  </section>
+
+  <section class="card list">
+    <div class="list-head">
+      <h2>Candidatures ({{count}})</h2>
+      <div class="actions">
+        <button aria-label="Filtrer" class="filter"><i class="fa-solid fa-filter"></i></button>
+        <select class="btn-select" aria-label="Filtre">
+          <option>Toutes</option>
+          <option>En attentes</option>
+          <option>Examinées</option>
+          <option>Présélectionnées</option>
+          <option>Rejetées</option>
+        </select>
+      </div>
+    </div>
+
+    @for (apply of filterapply; track apply) {
+      @if(apply.createdAt != null){
+        <div class="row">
+          <div class="who">
+            <h3>{{apply.lastName}} {{apply.firstName}} <span class="badges"><span class="mini compat"> {{apply.score.toFixed(2)}}% compatibilité</span><span class="mini presel">Présélectionnée</span></span></h3>
+            <div class="light"><i class="fa-regular fa-calendar"></i> {{apply.createdAt | date: 'dd/MM/yyyy'}} &nbsp; — &nbsp; <a href="mailto:marie.dubois@email.com">marie.dubois@email.com</a></div>
+            <div class="tags">
+              @for (skill of apply.skills; track skill) {
+                <span class="tag">{{skill}}</span>
+              }
+            </div>
+          </div>
+          <div class="icons">
+            <button class="icon-btn" title="Télécharger" (click)="downloadCv(apply.id, apply.firstName, apply.lastName)"><i class="fa-solid fa-download"></i></button>
+            <button class="icon-btn" title="Voir"><i class="fa-regular fa-eye"></i></button>
+          </div>
+        </div>
+      }
+    }
+    
+  </section>
+</div>

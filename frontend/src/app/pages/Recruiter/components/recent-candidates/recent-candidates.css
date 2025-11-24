@@ -1,0 +1,85 @@
+
+    .container {
+      max-width: 460px;
+      background-color: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+      padding: 20px 24px 28px 24px;
+      width: 450px;
+      height: 380px;
+      margin-bottom: 20px;
+    }
+    h2 {
+      font-weight: 600;
+      font-size: 1.125rem; /* 18px */
+      color: #1f2937;
+      margin-bottom: 20px;
+    }
+    .candidate-card {
+      background-color: #f3f4f6; /* gray-100 */
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-sizing: border-box;
+      height: 100px; 
+    }
+    .candidate-info {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      max-width: 75%;
+    }
+    .candidate-name {
+      font-weight: 700;
+      font-size: 1rem; /*16px*/
+      line-height: 1.2;
+      color: #111827; /* gray-900 */
+    }
+    .candidate-role {
+      font-size: 0.875rem; /*14px*/
+      font-weight: 500;
+      color: #374151; /* gray-700 */
+      margin: 0;
+    }
+    .candidate-date {
+      font-size: 0.75rem; /*12px*/
+      font-weight: 400;
+      color: #6b7280; /* gray-500 */
+      margin-top: 2px;
+    }
+    .status-score {
+      text-align: right;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-family: "Poppins", sans-serif;
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: #111827;
+      min-width: 60px;
+    }
+    .percentage {
+      font-weight: 700;
+    }
+    .status {
+      border-radius: 9999px;
+      padding: 4px 10px;
+      font-weight: 600;
+      font-size: 0.75rem; /*12px*/
+      line-height: 1;
+      color: white;
+      display: inline-block;
+      width: fit-content;
+      white-space: nowrap;
+    }
+    .preselected {
+      background-color: #a7f3d0; /* green-200 */
+      color: #047857; /* green-700 */
+    }
+    .examined {
+      background-color: #bfdbfe; /* blue-200 */
+      color: #2563eb; /* blue-600 */
+    }

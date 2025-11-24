@@ -1,0 +1,57 @@
+<app-cand-sidebar></app-cand-sidebar>
+<a class="back" (click)="turnBack()"><i class="fa-solid fa-arrow-left"></i> Retour aux offres</a>
+<div class="offer-header" *ngIf="offer">
+    <div>
+      <h2 class="offer-title">{{offer.title}}</h2>
+      <div class="offer-subtitle">
+        <span><mat-icon>business</mat-icon> {{offer.enterprise}}</span>
+        <span><mat-icon>business_center</mat-icon> {{offer.type}} </span>
+        <span><mat-icon>location_on</mat-icon> {{offer.location}}</span>
+        <span><mat-icon>event</mat-icon> Publié le {{offer.createdAt | date: 'dd/MM/yyyy'}}</span>
+      </div>
+      <div class="offer-meta">
+        <span><mat-icon fontIcon="paid"></mat-icon> Salaire: {{offer.min_salary}}Dhs - {{offer.max_salary}}Dhs </span>
+        <span><mat-icon>star</mat-icon> Offre {{offer.status}}</span>
+      </div>
+    </div>
+    <button mat-raised-button class="apply-btn" (click)="offerApply(offer.id)">
+      <mat-icon>send</mat-icon> Postuler maintenant
+    </button>
+</div>
+<div class="offer-card mat-elevation-z4">
+    <div class="offer-body">
+        <div class="offer-description">
+            <h3>Description du poste</h3>
+            <p> {{offer.description}} </p>
+
+            <h3>Compétences recherchées</h3>
+            <div class="skills">
+                @for (skill of skills; track $index) {
+                    <span> {{skill}} </span>
+                }
+            </div>
+
+            <h3>Langues souhaitées</h3>
+            <div class="language">
+                @for (lang of languages; track $index) {
+                    <span> {{lang}} </span>
+                }
+            </div>
+        </div>
+
+        <!-- SIDEBAR -->
+        <div class="offer-sidebar">
+            <h4>Critères requis</h4>
+            <div class="require">
+                <div class="edexp">
+                    <p><i class="fa-regular fa-star" style="color: #f7b000;"></i> Éducation</p>
+                    <p><i class="fa-solid fa-award" style="color: #ba5df5;"></i> Expérience</p>
+                </div>
+                <div>
+                    <p>{{offer.education}}</p>
+                    <p>{{offer.exp}} ans min.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

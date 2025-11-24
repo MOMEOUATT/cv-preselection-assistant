@@ -1,0 +1,26 @@
+<app-sidebar></app-sidebar>
+@if (offers().length ==0) {
+    <div class="offer">
+        <button matButton="filled" class="offerbutton" (click)="createOffer()"><span class="icon">+</span> Nouvelle offre</button>
+    </div>
+    <div class="null">
+        <p>Aucune offre à ajouter pour l'instant(Veuillez Créer de nouvellles offres!!!).</p>
+    </div>
+}@else {
+    <div class="offer">
+        <button matButton="filled" class="offerbutton" (click)="createOffer()"><span class="icon">+</span> Nouvelle offre</button>
+    </div>
+
+    <app-searchbar  (search)="onSearchChange($event)"></app-searchbar>
+    <div class="row">
+       @if (filterOffer().length == 0) {
+        <div class="null">
+            <p>Aucune offre trouvée</p>
+        </div>
+       } @else {
+         @for(offer of filterOffer(); track offer){
+            <app-offers-card [offer]="offer"></app-offers-card>
+        }
+       }
+    </div>
+}

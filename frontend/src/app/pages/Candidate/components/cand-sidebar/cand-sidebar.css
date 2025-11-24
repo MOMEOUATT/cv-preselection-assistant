@@ -1,0 +1,87 @@
+.sidebar {
+  max-width: 200px;
+  width: 200px;
+  height: 100vh;
+  background-color: #0f172a;
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 40px;
+}
+
+.sidebar-logo img {
+  width: 36px;
+  height: 36px;
+}
+
+.sidebar-logo h2 {
+  font-size: 20px;
+  color: white;
+  margin: 0;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.logout{
+  margin-top: 130px;
+}
+
+.sidebar-link {
+  color: #cbd5e1;
+  text-decoration: none;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.sidebar-link.active {
+  background-color: #1e293b;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+}
+
+
+.sidebar-link:hover {
+  background-color: #1e293b;
+  color: white;
+}
+
+/* Animation pour l'élément actif */
+.sidebar-link.active {
+  color: white;
+  background-color: #1e293b;
+  animation: pulse-glow 1.5s infinite;
+  box-shadow: 0 0 10px #38bdf8, 0 0 20px #38bdf8;
+}
+
+@keyframes pulse-glow {
+  0% {
+    box-shadow: 0 0 10px #38bdf8, 0 0 20px #38bdf8;
+  }
+  50% {
+    box-shadow: 0 0 20px #0ea5e9, 0 0 30px #0ea5e9;
+  }
+  100% {
+    box-shadow: 0 0 10px #38bdf8, 0 0 20px #38bdf8;
+  }
+}

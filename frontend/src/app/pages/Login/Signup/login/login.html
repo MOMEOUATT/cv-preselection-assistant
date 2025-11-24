@@ -1,0 +1,112 @@
+
+<div class="contains">
+    
+    <div class="container" [class.active]="isRegisterMode">
+        <div class="form-box login">
+            <form [formGroup]="loginData" (submit)="onLogin()">
+            <h1>Connexion</h1>
+            <div class="input-box">
+                <input type="email" placeholder="Email" formControlName="email" required  />
+                <i class="bx bxs-envelope"></i>
+            </div>
+            <div class="input-box">
+                <input [type]="hideLogin ? 'password' : 'text'" placeholder="Mot de passe" formControlName="password" required />
+                <i class="fa-solid" 
+                    [class.fa-eye-slash]="hideLogin" 
+                    [class.fa-eye]="!hideLogin"
+                    (click)="clickLog($event)"
+                    style="cursor: pointer; font-size: 15px;">
+                </i> 
+            </div>
+            <div class="forgot-link">
+                <a>Mot de passe oublié?</a>
+            </div>
+            <button matButton="filled" type="submit" class="btn" [disabled]="loginData.invalid">Connexion</button>
+            <p>ou connectez-vous avec</p>
+            <div class="social-icons">
+                <a><i class="bx bxl-google"></i></a>
+                <a><i class="bx bxl-github"></i></a>
+                <a><i class="bx bxl-linkedin"></i></a>
+            </div>
+            </form>
+        </div>
+
+        <div class="form-box register">
+            <form [formGroup]="registerData" (submit)="onRegister()">
+            <h1>Inscription</h1>
+            <div class="input-box">
+                <input type="email" placeholder="Email" formControlName="email" required/>
+                <i class="bx bxs-envelope"></i>
+            </div>
+            <div class="input-box">
+                <input type="text" placeholder="Nom complet" formControlName="name" required />
+                <i class="bx bxs-user"></i>
+            </div>
+            <div class="input-box">
+                <input [type]="hide() ? 'password' : 'text'" placeholder="Mot de passe" formControlName="password" required/>
+                <i class="fa-solid" 
+                    [class.fa-eye-slash]="hide()" 
+                    [class.fa-eye]="!hide()"
+                    (click)="clickEvent($event)"
+                    style="cursor: pointer;font-size: 15px;">
+                </i>
+            </div>
+            <div class="error" *ngIf="registerData.get('password')?.errors?.['passwordStrength']">
+                    <small *ngIf="!registerData.get('password')?.errors?.['passwordStrength']?.isLongEnough">
+                        Au moins 8 caractères
+                    </small>
+                    <small *ngIf="!registerData.get('password')?.errors?.['passwordStrength']?.hasUpperCase">
+                        Une majuscule requise
+                    </small>
+                    <small *ngIf="!registerData.get('password')?.errors?.['passwordStrength']?.hasLowerCase">
+                        Une minuscule requise
+                    </small>
+                    <small *ngIf="!registerData.get('password')?.errors?.['passwordStrength']?.hasDigit">
+                        Un chiffre requis
+                    </small>
+                    <small *ngIf="!registerData.get('password')?.errors?.['passwordStrength']?.hasSpecialChar">
+                        Un caractère spécial requis
+                    </small>
+                </div>
+            <div class="input-box">
+                <input [type]="hidePassword ? 'password' : 'text'" placeholder="Confirmer le mot de passe" formControlName="confirmedPassword" required />
+                <i class="fa-solid" 
+                    [class.fa-eye-slash]="hidePassword" 
+                    [class.fa-eye]="!hidePassword"
+                    (click)="clickP($event)"
+                    style="cursor: pointer;font-size: 15px;">
+                </i> 
+            </div>
+            <div class="radio">
+            <label>Vous êtes ?</label><br>
+            <mat-radio-group formControlName="role" class="radio-group">
+                <mat-radio-button value="CANDIDATE">Candidat</mat-radio-button>
+                <mat-radio-button value="RH">RH</mat-radio-button>
+            </mat-radio-group>
+            </div>
+
+            @if (registerData.get('role')?.value === 'RH') {
+                <div class="input-box">
+                    <input type="text" placeholder="Nom de l'entreprise" formControlName="company" />
+                    <i class='bx bxs-business'></i>
+                </div>
+            }
+            <button matButton="filled" type="submit" class="btn" [disabled]="registerData.invalid">Inscription</button>
+            </form>
+        </div>
+
+        <div class="toggle-box">
+            <div class="toggle-panel toggle-left">
+            <h1>Salut, Bienvenue!</h1>
+            <p>Vous n'avez pas de compte?</p>
+            <button class="btn register-btn" (click)="toggle(true)">Inscription</button>
+            </div>
+
+            <div class="toggle-panel toggle-right">
+            <h1>Bon retour parmi nous!</h1>
+            <p>Vous avez un compte?</p>
+            <button class="btn login-btn" (click)="toggle(false)">Connexion</button>
+            </div>
+        </div>
+    </div>
+</div>

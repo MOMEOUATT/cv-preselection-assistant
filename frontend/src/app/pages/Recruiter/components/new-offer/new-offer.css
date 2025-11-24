@@ -1,0 +1,40 @@
+.container{
+    margin-left: 260px;
+}
+
+form {
+    margin: 20px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    border: none;
+}
+mat-form-field{
+    width: 100%;
+}
+
+/* job-offer-dialog.component.css */
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.row {
+  display: flex;
+  gap: 16px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+mat-chip {
+  margin: 4px;
+}
+
+.button{
+    display: flex;
+    gap: 20px;
+    justify-content: right;
+}
