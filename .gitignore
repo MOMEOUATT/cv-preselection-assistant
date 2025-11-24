@@ -1,0 +1,25 @@
+# --- Backend (Spring Boot) ---
+target/
+*.class
+*.jar
+*.war
+*.log
+*.iml
+.idea/
+
+# Fichiers sensibles
+src/main/resources/application.properties
+src/main/resources/application.yml
+
+# --- Frontend (Angular) ---
+node_modules/
+dist/
+.angular/
+npm-debug.log
+yarn-error.log
+package-lock.json
+
+# --- Global ---
+.vscode/
+.DS_Store
+Thumbs.db
